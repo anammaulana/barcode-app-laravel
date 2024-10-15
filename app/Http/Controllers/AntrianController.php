@@ -10,7 +10,7 @@ class AntrianController extends Controller
 {
     public function index()
     {
-        $antrians = Antrian::paginate(10);  // Atur pagination
+        $antrians = Antrian::paginate(2);  // Atur pagination
         $totalAntrian = Antrian::count();
         $menunggu = Antrian::where('status', 'Menunggu')->count();
         $dilayani = Antrian::where('status', 'Dilayani')->count();

@@ -111,7 +111,8 @@
 
         {{-- Pagination --}}
         <div class="d-flex justify-content-center">
-            {{ $antrians->links() }}
+            <!-- {{ $antrians->links() }} -->
+            {{ $antrians->links('pagination::bootstrap-5') }}
         </div>
     </div>
 
