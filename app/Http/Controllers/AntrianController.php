@@ -10,7 +10,7 @@ class AntrianController extends Controller
 {
     public function index()
     {
-        $antrians = Antrian::paginate(2);  // Atur pagination
+        $antrians = Antrian::paginate(5);  // Atur pagination
         $totalAntrian = Antrian::count();
         $menunggu = Antrian::where('status', 'Menunggu')->count();
         $dilayani = Antrian::where('status', 'Dilayani')->count();
@@ -70,15 +70,17 @@ class AntrianController extends Controller
     }
 
 
-    public function show($id)
+    public function show($nomor_antrian)
     {
-        $antrian = Antrian::findOrFail($id);
+        // Cari data antrian berdasarkan nomor_antrian
+        $antrian = Antrian::where('nomor_antrian', $nomor_antrian)->firstOrFail();
 
         // Generate QR code untuk nomor antrian
-        $qrcode = QrCode::size(200)->generate(route('antrian.show', $antrian->id));
+        $qrcode = QrCode::size(200)->generate(route('antrian.show', $antrian->nomor_antrian));
 
         return view('antrian.show', compact('antrian', 'qrcode'));
     }
+
 
     public function updateStatus($id, $status)
     {

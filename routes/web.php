@@ -23,7 +23,7 @@ Route::post('/antrian/store', [AntrianController::class, 'store'])->name('antria
 Route::get('/antrian/{id}/generate', [AntrianController::class, 'generateQrCode'])->name('antrian.generate-qr');
 Route::get('/antrian/{id}/update-status/{status}', [AntrianController::class, 'updateStatus'])->name('antrian.update-status');
 Route::delete('/antrian/{id}', [AntrianController::class, 'destroy'])->name('antrian.destroy');
-Route::get('/antrian/{id}', [AntrianController::class, 'show'])->name('antrian.show');
+Route::get('/antrian/{nomor_antrian}', [AntrianController::class, 'show'])->name('antrian.show');
 Route::get('/antrian/scan', [AntrianController::class, 'scan'])->name('antrian.scan');
 
 Route::get('/daftar', [AntrianController::class, 'daftarAntrian'])->name('antrian.daftarAntrian');
